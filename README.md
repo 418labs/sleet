@@ -1,4 +1,4 @@
-![Avax-Cableway logo](public/images/logo.png)(https://www.avaxcableway.com/)
+<img src="public/images/logo.png" width="200" height="200" />
 # Avax-Cableway: Relayer as a Service
 
 Deploy and manage your relayers on Avalanche with just one click!
