@@ -1,33 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![Avax-Cableway logo](public/images/logo.png)(https://www.avaxcableway.com/)
+# Avax-Cableway: Relayer as a Service
 
-## Getting Started
+Deploy and manage your relayers on Avalanche with just one click!
+
+We believe that the future of the Avalanche ecosystem is in the interoperability of the different blockchains of the ecosystem.
+We are building a platform that allows users to deploy their own relayers and
+manage them easily.
+
+We also envision a future where the relayers will be able to choose the messages that will generate profit, and the user will be able to
+choose the relayer that will be the most profitable for them.
+
+This project is a proof of concept (that works!) started with <3 in the
+[Summit LATAM Hackathon 2024](https://academy.avax.network/hackathon).
+
+[Try it out here!](https://www.avaxcableway.com/)
+
+## Features 🚀
+
+- [x] Deploy relayers with 0 code
+- [ ] Deploy preloaded relayers (forget about funding them)
+- [ ] Manage your relayers
+- [ ] Choose the messages that will generate profit
+
+## Future Plans 🚀
+
+- [ ] Smart incentive calculator (improvement to awm-relayer)
+- [ ] SDK-Integrated Relayer for Developers
+- [ ] Mobile Relayer App for Decentralized Participation
+
+## Getting Started 🚀
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
