@@ -1,5 +1,5 @@
 'use client';
-import { Twitter, Linkedin } from 'lucide-react';
+import { Twitter, Linkedin, Github } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -13,6 +13,9 @@ const Footer = () => {
             </a>
             <a href="https://www.linkedin.com/company/avax-cableway" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition-colors">
               <Linkedin size={20} />
+            </a>
+            <a href="https://github.com/418labs/Avax-Cableway" target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition-colors">
+              <Github size={20} />
             </a>
 
           </div>
