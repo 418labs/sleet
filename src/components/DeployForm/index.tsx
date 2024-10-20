@@ -1,8 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Info } from 'lucide-react';
 import Image from 'next/image';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 import { L1_CHAINS, L1Data } from '@/constants';
 
 interface DeployFormProps {
@@ -12,14 +18,10 @@ interface DeployFormProps {
 export type DeploymentData = {
   sourceIds: string[];
   destinationIds: string[];
+  useSmartIncentives: boolean;
 }
 
-const CustomSelect = ({ value, onChange, options, placeholder }: {
-  value: string;
-  onChange: (value: string) => void;
-  options: Record<string, L1Data>;
-  placeholder: string;
-}) => {
+const CustomSelect = ({ value, onChange, options, placeholder }: { value: string; onChange: (value: string) => void; options: Record<string, L1Data>; placeholder: string; }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -63,6 +65,7 @@ const CustomSelect = ({ value, onChange, options, placeholder }: {
 const DeployForm: React.FC<DeployFormProps> = ({ setDeploymentData }) => {
   const [sourceChain, setSourceChain] = useState<string>('');
   const [destinationChain, setDestinationChain] = useState<string>('');
+  const [useSmartIncentives, setUseSmartIncentives] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,6 +75,7 @@ const DeployForm: React.FC<DeployFormProps> = ({ setDeploymentData }) => {
       setDeploymentData({
         sourceIds: [sourceChainData.id],
         destinationIds: [destinationChainData.id],
+        useSmartIncentives,
       });
     }
   };
@@ -102,6 +106,29 @@ const DeployForm: React.FC<DeployFormProps> = ({ setDeploymentData }) => {
           options={L1_CHAINS}
           placeholder="Select Destination Chain"
         />
+      </div>
+      <div className="flex items-center space-x-2">
+        <input
+          type="checkbox"
+          id="smartIncentives"
+          checked={useSmartIncentives}
+          onChange={(e) => setUseSmartIncentives(e.target.checked)}
+          className="form-checkbox h-5 w-5 text-red-500"
+          disabled
+        />
+        <label htmlFor="smartIncentives" className="text-sm text-gray-300">
+          Activate smart incentive calculator (Coming Soon)
+        </label>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Info className="w-4 h-4 text-gray-400" />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>This feature makes the relayer choose only messages that will generate profit.</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
       <div className="text-center">
         <button

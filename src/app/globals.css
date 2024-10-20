@@ -56,3 +56,9 @@ body {
 }
 
 /* Add more custom styles as needed */
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}

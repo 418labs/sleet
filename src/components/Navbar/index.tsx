@@ -5,9 +5,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Home, Layers, LayoutDashboard } from 'lucide-react';
 import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import { formatAddress } from '@/utils';
 
 const Navbar = () => {
-  const { isConnected } = useAccount()
+  const { isConnected, address } = useAccount()
   const { connect, connectors } = useConnect()
   const { disconnect } = useDisconnect()
 
@@ -18,7 +19,7 @@ const Navbar = () => {
 
   const handleConnect = async () => {
     if (connectors.length > 0) {
-      await connect({ connector: connectors[0] })
+      connect({ connector: connectors[0] })
     }
   }
 
@@ -49,6 +50,10 @@ const Navbar = () => {
                 <LayoutDashboard size={18} />
                 <span>Dashboard</span>
               </Link>
+              <div className="flex items-center space-x-1">
+                <span className="text-gray-400">Address:</span>
+                <span>{formatAddress(address!)}</span>
+              </div>
               <button
                 onClick={() => disconnect()}
                 className="btn btn-primary"
