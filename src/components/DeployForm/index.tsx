@@ -21,7 +21,7 @@ export type DeploymentData = {
   useSmartIncentives: boolean;
 }
 
-const CustomSelect = ({ value, onChange, options, placeholder }: { value: string; onChange: (value: string) => void; options: Record<string, L1Data>; placeholder: string; }) => {
+const CustomSelect = ({value, onChange, options, placeholder }: { value: string; onChange: (value: string) => void; options: Record<string, L1Data>; placeholder: string; }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -88,7 +88,6 @@ const DeployForm: React.FC<DeployFormProps> = ({ setDeploymentData }) => {
           Source Chain:
         </label>
         <CustomSelect
-          id="sourceChain"
           value={sourceChain}
           onChange={setSourceChain}
           options={L1_CHAINS}
@@ -100,7 +99,6 @@ const DeployForm: React.FC<DeployFormProps> = ({ setDeploymentData }) => {
           Destination Chain:
         </label>
         <CustomSelect
-          id="destinationChain"
           value={destinationChain}
           onChange={setDestinationChain}
           options={L1_CHAINS}
