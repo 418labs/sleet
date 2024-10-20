@@ -1,16 +1,26 @@
 'use client'
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Home, Layers, LayoutDashboard } from 'lucide-react';
+import { useAccount, useConnect, useDisconnect } from 'wagmi'
 
 const Navbar = () => {
-  const [isConnected, setIsConnected] = useState(false);
+  const { isConnected } = useAccount()
+  const { connect, connectors } = useConnect()
+  const { disconnect } = useDisconnect()
 
-  const toggleConnection = () => {
-    setIsConnected(!isConnected);
-  };
+  const [mounted, setMounted] = React.useState(false)
+  React.useEffect(() => setMounted(true), [])
+
+  if (!mounted) return null
+
+  const handleConnect = async () => {
+    if (connectors.length > 0) {
+      await connect({ connector: connectors[0] })
+    }
+  }
 
   return (
     <nav className="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg h-20 p-0">
@@ -21,7 +31,7 @@ const Navbar = () => {
             alt="Logo"
             width={120}
             height={80}
-            className="h-5/6 w-auto object-contain"
+            className="h-full w-auto object-cover"
           />
         </Link>
         <div className="flex items-center space-x-4">
@@ -40,7 +50,7 @@ const Navbar = () => {
                 <span>Dashboard</span>
               </Link>
               <button
-                onClick={toggleConnection}
+                onClick={() => disconnect()}
                 className="btn btn-primary"
               >
                 Disconnect
@@ -48,7 +58,7 @@ const Navbar = () => {
             </>
           ) : (
             <button
-              onClick={toggleConnection}
+              onClick={handleConnect}
               className="btn btn-primary"
             >
               Connect Wallet
